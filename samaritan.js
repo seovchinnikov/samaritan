@@ -247,7 +247,7 @@ function startDictation() {
 			recognition.stop();
 		}
 		
-		recognition.onstop = function(e) {
+		recognition.onend = function(e) {
 			whatAreYourCommands();
 		}
 		
