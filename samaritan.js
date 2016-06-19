@@ -227,7 +227,6 @@ function startDictation() {
 		recognition.continuous = false;
 		recognition.interimResults = false;
 		recognition.lang = "en-US";
-		recognition.start();
 
 		recognition.onresult = function(e) {
 			var go_to = function() {
@@ -237,7 +236,7 @@ function startDictation() {
 				setTimeout(go_to, 700);
 			}
 			var calc_resp = function() {
-				executeSamaritan("Calculating Response", time_out_and_go)
+				executeSamaritan("Calculating Response with confidence " + e.results[0][0].confidence, time_out_and_go)
 			};
 			executeSamaritan(e.results[0][0].transcript, calc_resp);
 			recognition.stop();
@@ -247,6 +246,12 @@ function startDictation() {
 			executeSamaritan("There is no alternative");
 			recognition.stop();
 		}
+		
+		recognition.onstop = function(e) {
+			whatAreYourCommands();
+		}
+		
+		recognition.start();
 
 	}
 }
