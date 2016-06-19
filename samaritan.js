@@ -243,7 +243,7 @@ function startDictation() {
 		};
 
 		recognition.onerror = function(e) {
-			executeSamaritan("There is no alternative");
+			executeSamaritan("There is no alternative", whatAreYourCommands);
 			recognition.stop();
 		}
 		
