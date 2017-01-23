@@ -226,7 +226,7 @@ function startDictation() {
 		var recognition = new webkitSpeechRecognition();
 		recognition.continuous = false;
 		recognition.interimResults = false;
-		recognition.lang = "ru-RU";
+		recognition.lang = "en-US";
 
 		recognition.onresult = function(e) {
 			var go_to = function() {
